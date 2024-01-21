@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -19,7 +20,16 @@ public class PersonJdbcDao {
     }
 
     public Person findById(int id) {
-        return  jdbcTemplate.queryForObject("select * from person where id = ?", new Object[] {id},
+        return jdbcTemplate.queryForObject("select * from person where id = ?", new Object[]{id},
                 new BeanPropertyRowMapper<>(Person.class));
+    }
+
+    public int deleteById(int id) {
+        return jdbcTemplate.update("delete from person where id = ?", new Object[]{id});
+    }
+
+    public int updatePerson(Person person) {
+        return jdbcTemplate.update("update person set name = ?, location = ?, birth_day = ? where id = ?",
+                new Object[]{person.getName(), person.getLocation(), new Timestamp(person.getBirth_day().getTime()), person.getId()});
     }
 }

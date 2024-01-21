@@ -24,5 +24,6 @@ public class SpringDataJpaRevisitedApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		logger.info("All users -> {}", personJdbcDao.findAll());
+		logger.info("Users -> {}", personJdbcDao.findById(1001));
 	}
 }
