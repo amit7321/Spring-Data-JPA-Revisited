@@ -30,6 +30,13 @@ public class PersonJdbcDao {
 
     public int updatePerson(Person person) {
         return jdbcTemplate.update("update person set name = ?, location = ?, birth_day = ? where id = ?",
-                new Object[]{person.getName(), person.getLocation(), new Timestamp(person.getBirth_day().getTime()), person.getId()});
+                new Object[]{person.getName(), person.getLocation(), new Timestamp(person.getBirth_day().getTime()),
+                        person.getId()});
+    }
+
+    public int insetPerson(Person person) {
+        return jdbcTemplate.update("insert into person (id, name, location, birth_date values(?, ?, ?, ?))",
+                new Object[]{person.getId(), person.getName(), person.getLocation(),
+                        new Timestamp(person.getBirth_day().getTime())});
     }
 }
