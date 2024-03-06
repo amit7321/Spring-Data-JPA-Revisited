@@ -23,6 +23,7 @@ public class SpringDataJpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		logger.info("All users -> {}", personJpaRepository.findById(1001));
+		personJpaRepository.deleteById(1001);
 	}
 
 }
