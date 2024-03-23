@@ -1,4 +1,4 @@
-package com.example.springdatajparevisited.jpa;
+package com.example.springdatajparevisited.jpa.repository;
 
 
 
