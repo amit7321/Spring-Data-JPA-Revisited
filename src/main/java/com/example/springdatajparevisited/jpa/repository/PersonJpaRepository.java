@@ -1,13 +1,16 @@
 package com.example.springdatajparevisited.jpa.repository;
 
+import java.util.List;
 
-
-import com.example.springdatajparevisited.jpa.entity.Person;
-import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.example.springdatajparevisited.jpa.entity.Person;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
