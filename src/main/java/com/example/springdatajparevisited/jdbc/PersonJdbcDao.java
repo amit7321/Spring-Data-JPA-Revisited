@@ -36,7 +36,7 @@ public class PersonJdbcDao {
     }
 
     public Person findById(int id) {
-        return jdbcTemplate.queryForObject(" select * from person where id = ?", new Object[]{id},
+        return jdbcTemplate.queryForObject("select * from person where id = ?", new Object[]{id},
                 new BeanPropertyRowMapper<>(Person.class));
     }
 
@@ -50,7 +50,7 @@ public class PersonJdbcDao {
                         person.getId()});
     }
 
-    public int insetPerson(Person person) {
+    public int insertPerson(Person person) {
         return jdbcTemplate.update("insert into person (id, name, location, birth_date values(?, ?, ?, ?))",
                 new Object[]{person.getId(), person.getName(), person.getLocation(),
                         new Timestamp(person.getBirth_day().getTime())});
