@@ -2,12 +2,14 @@ package com.example.springdatajparevisited.jpa.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.springdatajparevisited.jpa.entity.Course;
 
 import jakarta.persistence.EntityManager;
 
 @Repository
+@Transactional
 public class CourseJpaRepository {
 
     @Autowired
@@ -30,6 +32,12 @@ public class CourseJpaRepository {
     public void deleteById(Long id) {
         Course course = findById(id);
         entityManager.remove(course);
+    }
+
+    public void playWithEntiyManager() {
+        Course course = new Course("web services in 100 steps");
+        entityManager.persist(course);
+        course.setName("web services in 50 steps");
     }
 
 }
