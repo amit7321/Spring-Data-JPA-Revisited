@@ -35,9 +35,20 @@ public class CourseJpaRepository {
     }
 
     public void playWithEntiyManager() {
-        Course course = new Course("web services in 100 steps");
-        entityManager.persist(course);
-        course.setName("web services in 50 steps");
+        Course course1 = new Course("web services in 100 steps");
+        entityManager.persist(course1);
+        course1.setName("web services in 50 steps - updated");
+        entityManager.flush();
+
+        Course course2 = new Course("name of course2 is course2");
+        entityManager.persist(course2);
+
+        entityManager.clear();
+
+        entityManager.detach(course2);
+
+        course2.setName("name of course2 is course2 - updated");
+        entityManager.flush();
     }
 
 }
