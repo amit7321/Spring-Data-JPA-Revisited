@@ -49,6 +49,6 @@ public class CourseJpaRepository {
 
         course2.setName("name of course2 is course2 - updated");
         entityManager.flush();
-    }
+    } 
 
 }

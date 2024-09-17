@@ -1,11 +1,18 @@
 package com.example.springdatajparevisited.jpa.entity;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,13 +21,25 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@NamedQueries(value = {
+    @NamedQuery(name = "query_get_all_courses", query = "selct c from course c"),
+    @NamedQuery(name = "query_get_100_step_courses", query = "select c from courses where name like '%100 Steps'")
+})
+
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedTime;
 
     public Course(String name) {
         this.name = name;
