@@ -1,7 +1,5 @@
 package com.example.springdatajparevisited.jpa.entity;
 
-import java.util.Objects;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Student {
+public class Passport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +16,7 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
-    public Student(String name) {
+    public Passport(String name) {
         this.name = name;
     }
 
@@ -35,21 +33,12 @@ public class Student {
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Student{");
-        sb.append("id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.id);
-        hash = 83 * hash + Objects.hashCode(this.name);
-        return hash;
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
     }
 
     @Override
@@ -63,11 +52,32 @@ public class Student {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Student other = (Student) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        Passport other = (Passport) obj;
+        if (id == null) {
+            if (other.id != null) {
+                return false;
+            }
+        } else if (!id.equals(other.id)) {
             return false;
         }
-        return Objects.equals(this.id, other.id);
+        if (name == null) {
+            if (other.name != null) {
+                return false;
+            }
+        } else if (!name.equals(other.name)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Passport{");
+        sb.append("id=").append(id);
+        sb.append(", name=").append(name);
+        sb.append('}');
+        return sb.toString();
     }
 
 }
