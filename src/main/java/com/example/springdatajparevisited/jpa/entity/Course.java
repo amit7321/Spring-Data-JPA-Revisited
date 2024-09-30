@@ -11,8 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,10 +19,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@NamedQueries(value = {
-    @NamedQuery(name = "query_get_all_courses", query = "selct c from course c"),
-    @NamedQuery(name = "query_get_100_step_courses", query = "select c from courses where name like '%100 Steps'")
-})
+/* @NamedQueries(value = {
+    @NamedQuery(name = "query_get_all_courses", query = "select c from Course c"),
+    @NamedQuery(name = "query_get_100_step_courses", query = "select c from Course where name like '%100 Steps'")
+}) */
 
 public class Course {
 
