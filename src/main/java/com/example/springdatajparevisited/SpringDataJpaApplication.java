@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.springdatajparevisited.jpa.repository.CourseJpaRepository;
 import com.example.springdatajparevisited.jpa.repository.PersonJpaRepository;
+import com.example.springdatajparevisited.jpa.repository.StudentRepository;
 
 @SpringBootApplication
 public class SpringDataJpaApplication implements CommandLineRunner {
@@ -20,6 +21,9 @@ public class SpringDataJpaApplication implements CommandLineRunner {
 
 	@Autowired
     CourseJpaRepository courseJpaRepository;
+
+    @Autowired
+    StudentRepository studentRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDataJpaApplication.class, args);
