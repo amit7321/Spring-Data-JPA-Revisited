@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +20,7 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.LAZY)
     private Passport passport;
 
     public Student(String name) {

@@ -2,9 +2,11 @@ package com.example.springdatajparevisited.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Passport {
@@ -15,6 +17,9 @@ public class Passport {
 
     @Column(nullable = false)
     private String name;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")
+    private Student student;
 
     public Passport(String name) {
         this.name = name;
@@ -30,6 +35,14 @@ public class Passport {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override
