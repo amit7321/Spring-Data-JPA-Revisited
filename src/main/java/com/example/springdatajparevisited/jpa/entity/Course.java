@@ -1,6 +1,8 @@
 package com.example.springdatajparevisited.jpa.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,8 +42,23 @@ public class Course {
     @UpdateTimestamp
     private LocalDateTime updatedTime;
 
+    @OneToMany(mappedBy="course")
+    private List<Review> reviews = new ArrayList<>();
+
     public Course(String name) {
         this.name = name;
+    }
+
+    public List<Review> getReview() {
+        return reviews;
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
+    }
+
+    public void removeReview(Review review) {
+        this.reviews.remove(review);
     }
 
     @Override

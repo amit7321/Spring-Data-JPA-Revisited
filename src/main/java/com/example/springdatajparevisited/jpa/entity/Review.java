@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -15,6 +16,9 @@ public class Review {
     private String description;
 
     private String rating;
+
+    @ManyToOne
+    private Course course;
 
     public Review(String description, String rating) {
         this.description = description;
@@ -39,6 +43,14 @@ public class Review {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     @Override

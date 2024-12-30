@@ -1,4 +1,4 @@
-package com.example.springdatajparevisited.jpa.entity;
+ package com.example.springdatajparevisited.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
